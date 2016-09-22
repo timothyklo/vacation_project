@@ -23,7 +23,7 @@ class Welcome extends CI_Controller {
 		if($this->form_validation->run() === FALSE)
 		{
 			$this->session->set_flashdata("registration_errors", validation_errors());
-			redirect('error');
+			redirect('/');
 		}
 		else
 		{
@@ -40,7 +40,7 @@ class Welcome extends CI_Controller {
 		if($this->form_validation->run() === FALSE)
 		{
 			$this->session->set_flashdata("login_errors", validation_errors());
-			redirect('error');
+			redirect('/');
 		}
 		else
 		{
