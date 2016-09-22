@@ -91,7 +91,6 @@ class CI_Session {
 		// Note: BC workaround
 		elseif (config_item('sess_use_database'))
 		{
-			log_message('debug', 'Session: "sess_driver" is empty; using BC fallback to "sess_use_database".');
 			$this->_driver = 'database';
 		}
 
@@ -232,7 +231,7 @@ class CI_Session {
 			}
 		}
 
-		if ( ! class_exists($prefix.$class, FALSE) && file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$prefix.$class.'.php'))
+		if ( ! class_exists($prefix.$class) && file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$prefix.$class.'.php'))
 		{
 			require_once($file_path);
 			if (class_exists($prefix.$class, FALSE))
@@ -585,24 +584,6 @@ class CI_Session {
 	// ------------------------------------------------------------------------
 
 	/**
-	 * __isset()
-	 *
-	 * @param	string	$key	'session_id' or a session data key
-	 * @return	bool
-	 */
-	public function __isset($key)
-	{
-		if ($key === 'session_id')
-		{
-			return (session_status() === PHP_SESSION_ACTIVE);
-		}
-
-		return isset($_SESSION[$key]);
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
 	 * __set()
 	 *
 	 * @param	string	$key	Session data key
@@ -730,7 +711,7 @@ class CI_Session {
 	 *
 	 * Legacy CI_Session compatibility method
 	 *
-	 * @param	mixed	$key	Session data key(s)
+	 * @param	mixed	$data	Session data key(s)
 	 * @return	void
 	 */
 	public function unset_userdata($key)
