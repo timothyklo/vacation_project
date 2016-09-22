@@ -1,5 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <!DOCTYPE html>
 <html>
@@ -22,16 +21,16 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 </head>
 <body>
 	<div class="container">
-		<h2> Welcome! </h2>
+		<h2> Welcome </h2>
 		<form id="register" action="welcome/register" method="POST">
 			<h5> Register </h5>
 			<div class="input-field">
-				<input type="text" id="name" name="name">
-				<label for="name">Name</label>
+				<input type="text" id="first_name" name="first_name">
+				<label for="name">First name</label>
 			</div>
 			<div class="input-field">
-				<input type="text" id="alias" name="alias">
-				<label for="alias">Alias</label>
+				<input type="text" id="last_name" name="last_name">
+				<label for="alias">Last name</label>
 			</div>
 			<div class="input-field">
 				<input type="text" id="email" name="email">
@@ -59,7 +58,18 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 			</div>
 			<button class="btn waves-effect waves-light center-align" type="submit">Login</button>
 		</form>
-
+	</div>
+	<div>
+		<?php if($this->session->flashdata("login_errors"))
+		{
+			echo $this->session->flashdata("login_errors");
+		}
+		?>
+		<?php if($this->session->flashdata("registration_errors"))
+		{
+			echo $this->session->flashdata("registration_errors");
+		}
+		?>
 	</div>
 </body>
 </html>
