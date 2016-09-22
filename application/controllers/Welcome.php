@@ -23,14 +23,14 @@ class Welcome extends CI_Controller {
 		if($this->form_validation->run() === FALSE)
 		{
 			$this->session->set_flashdata("registration_errors", validation_errors());
-			redirect('login');
+			redirect('/');
 		}
 		else
 		{
 			$this->load->model("User");
 			$insert_user = $this->User->register($this->input->post());
 			$this->session->set_userdata("user_session", $user_input);
-			redirect('login');
+			redirect('/');
 		}
 	}
 	public function login() {
@@ -40,14 +40,14 @@ class Welcome extends CI_Controller {
 		if($this->form_validation->run() === FALSE)
 		{
 			$this->session->set_flashdata("login_errors", validation_errors());
-			redirect('login');
+			redirect('/');
 		}
 		else
 		{
 			$this->load->model("User");							   
 			$get_user = $this->user_model->get_user($this->input->post());
 			$this->session->set_userdata("user_session", $get_user);
-			redirect('login');
+			redirect('/');
 		}
 	}
 	public function logout() {
