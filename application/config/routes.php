@@ -1,6 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -19,13 +17,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 | Please see the user guide for complete details:
 |
-|	https://codeigniter.com/user_guide/general/routing.html
+|	http://codeigniter.com/user_guide/general/routing.html
 |
 | -------------------------------------------------------------------------
 | RESERVED ROUTES
 | -------------------------------------------------------------------------
 |
-| There are three reserved routes:
+| There area two reserved routes:
 |
 |	$route['default_controller'] = 'welcome';
 |
@@ -35,29 +33,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 |	$route['404_override'] = 'errors/page_missing';
 |
-| This route will tell the Router which controller/method to use if those
-| provided in the URL cannot be matched to a valid route.
+| This route will tell the Router what URI segments to use if those provided
+| in the URL cannot be matched to a valid route.
 |
-|	$route['translate_uri_dashes'] = FALSE;
-|
-| This is not exactly a route, but allows you to automatically route
-| controller and method names that contain dashes. '-' isn't a valid
-| class or method name character, so it requires translation.
-| When you set this option to TRUE, it will replace ALL dashes in the
-| controller and method URI segments.
-|
-| Examples:	my-controller/index	-> my_controller/index
-|		my-controller/my-method	-> my_controller/my_method
 */
 
-// this is the default controller. You need to change it depending on your project
-$route['default_controller'] = 'Users';
-$route['signIn'] = 'Users/login';
-$route['signUp'] = 'Users/register';
-$route['user/(:num)'] = 'Masters/user/$1';
-$route['book/(:num)'] = 'Masters/book/$1';
-$route['addBook'] = 'Masters/addbooks';
-$route['book'] = 'Masters/newBook';
-$route['logOut'] = 'Masters/kill'; 
+$route['default_controller'] = 'session/index';
+$route['register'] = 'session/register';
+$route['login'] = 'session/login';
+$route['books/add'] = 'books/add';
+$route['books/addBook'] = 'books/addBook';
+$route['books/(:any)'] = 'books/detail/$1';
+$route['users/(:any)'] = 'users/detail/$1';
+$route['addReview'] = 'books/addReview';
+$route['deleteReview/(:any)'] = 'books/deleteReview/$1';
 $route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+
+
+/* End of file routes.php */
+/* Location: ./application/config/routes.php */

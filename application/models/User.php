@@ -1,45 +1,34 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User extends CI_Model {
-  
-  public function register($post) {
-    $query = "INSERT INTO users (name, alias, email, password, created_at, updated_at)
-              VALUES (?,?,?,?,?,?)";
-    $values = array($post['name'], $post['alias'], $post['email'],
-                    md5($post['password']), date("Y-m-d, H:i:s"), date("Y-m-d, H:i:s"));
-    $id = $this->db->insert_id($this->db->query($query, $values));
-    return $this->find($id);
-  }
-  public function find($id) {
-    return $this->db->query("SELECT * FROM users WHERE id = ?", array($id))->row_array();
-  }
-  public function validate($post) {
-    $this->load->library('form_validation');
-    $this->form_validation->set_rules('name', 'Name', 'trim|required');
-    $this->form_validation->set_rules('alias', 'Alias', 'trim|required');
-    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
-    $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]|matches[password_check]');
-    $this->form_validation->set_rules('password_check', 'Password Confirmation', 'trim|required');
-    if($this->form_validation->run()) {
-      return "valid";
-    } else {
-    return array(validation_errors());
-    }
-  }
-  public function login($post) {
-    $query = "SELECT * FROM users WHERE email = ? AND password = ?";
-    $values = array($post['email'], md5($post['password']));
-    return $this->db->query($query, $values)->row_array();
-  }
-  public function loginValidate($post) {
-    $this->load->library('form_validation');
-    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-    $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
-    if($this->form_validation->run()) {
-      return "valid";
-    } else {
-    return array(validation_errors());
-    }
-  }
-}
+	class User extends CI_Model {
+		function getUsers() {
+			return $this->db->query("SELECT * FROM user ORDER BY name")->result_array();
+		}
+
+		function getUser($userID) {
+			return $this->db->query("SELECT * FROM user WHERE id = ?", array($userID))->row_array();
+		}
+
+		function registerUser($userData) {
+			$query = "INSERT INTO user (name, alias, email, password) VALUES (?,?,?,?)";
+			$values = array($userData['name'], $userData['alias'], $userData['email'], $userData['password']);
+
+			$this->db->query($query, $values);
+			$newUserID = $this->db->insert_id();
+
+			if ($newUserID) {
+				$query = "SELECT * FROM user WHERE id=$newUserID";
+
+				return $this->db->query($query)->row_array();
+			}
+
+			return FALSE;
+		}
+
+		function login($userData) {
+			$query = "SELECT * FROM user WHERE email=? AND password=?";
+			$values = array($userData['email'], $userData['password']);
+
+			return $this->db->query($query, $values)->row_array();
+		}
+	}
