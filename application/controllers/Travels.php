@@ -14,16 +14,21 @@ class Travels extends CI_Controller {
 		$this->load->view('destination', array('trip' => $this->Trip->getOneTrip($trip), 'others' => $this->Trip->getUsersOnTrip($trip)));
 	}
 	public function add() {
-		$this->load->view('addplan');
+		$this->load->view('addtrip');
 	}
-	public function addATrip() {
-		$this->Trip->addATrip($this->input->post());
-		redirect('travels');
+	public function addatrip() {
+		$result = $this->Trip->tripValidate($this->input->post());
+		if($result == "valid") {
+			$this->Trip->addATrip($this->input->post());
+			redirect('travels');
+		} else {
+			$errors = array(validation_errors());
+			$this->session->set_flashdata('errors', $errors);
+			redirect('travels/add');
+		}
 	}
 	public function join($trip) {
 		$this->Trip->joinTrip($trip);
 		redirect('travels');
-	}
-	public function validateTrip() {
 	}
 }

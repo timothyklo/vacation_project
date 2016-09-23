@@ -59,7 +59,7 @@
 				<?php foreach ($others as $upcomingTrip) { ?>
 				<tr>
 					<td><?= $upcomingTrip['name']?></td>
-					<td><?= $upcomingTrip['destination']?></td>
+					<td><a href="travels/destination/<?= $upcomingTrip['tid'] ?>"><?= $upcomingTrip['destination']?></a></td>
 					<td><?= $upcomingTrip['travel_date_from']?></td>
 					<td><?= $upcomingTrip['travel_date_to']?></td>
 					<td><a href="travels/join/<?= $upcomingTrip['tid'] ?>">Join</a></td>

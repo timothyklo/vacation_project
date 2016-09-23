@@ -20,28 +20,28 @@
 				var travelTo = $("#travel_date_to").val();
 				var destination = $("#destination").val();
 				var description = $("#description").val();
-				if(travelFrom == "") {
-					errors.push("You must pick a start date!")
-				};
-				if(travelTo == "") {
-					errors.push("You must pick an end date!")
-				};
-				if(destination =="") {
-					errors.push("You must provide a destination!")
-				};
-				if(description =="") {
-					errors.push("You must provide a description!")
-				};
-				if(errors.length > 0) {
-					$("#feedback").html("");
-					for (var i in errors) {
-						$("#feedback").append("<p>" + errors[i] + "</p>");
-					}
-				} else {
-					$("#feedback").html("");
-					alert("OK " + userName + ", you'll be going from " + travelFrom + " to " + travelTo + ".");
-				}
-				return false;
+				// if(travelFrom == "") {
+				// 	errors.push("You must pick a start date!")
+				// };
+				// if(travelTo == "") {
+				// 	errors.push("You must pick an end date!")
+				// };
+				// if(destination =="") {
+				// 	errors.push("You must provide a destination!")
+				// };
+				// if(description =="") {
+				// 	errors.push("You must provide a description!")
+				// };
+				// if(errors.length > 0) {
+				// 	$("#feedback").html("");
+				// 	for (var i in errors) {
+				// 		$("#feedback").append("<p>" + errors[i] + "</p>");
+				// 	}
+				// } else {
+				// 	$("#feedback").html("");
+				// 	alert("OK " + userName + ", you'll be going from " + travelFrom + " to " + travelTo + ".");
+				// }
+				// return false;
 			});
 		});
 	</script>
@@ -89,6 +89,15 @@
 				</div>
 			</form>
 		</div>
+						<?php 
+				if($this->session->flashdata('errors')) {
+					foreach($this->session->flashdata('errors') as $value) { 
+						?>
+						<p><?= $value ?></p>
+						<?php
+					}	
+				} 
+				?>
 	</div>
 </body>
 </html>
