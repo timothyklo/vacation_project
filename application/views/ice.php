@@ -10,7 +10,7 @@
 		    </div>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/">Link</a></li>
-				<li><a href="Users/logout">Log Out</a></li>
+				<li><a href="/Users/logout">Log Out</a></li>
 			</ul>
 	      </div>
 	  </div>
