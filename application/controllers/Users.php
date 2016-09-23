@@ -10,7 +10,7 @@ class Users extends CI_Controller {
 		$result = $this->User->registerValidate($this->input->post());
 		if($result == "valid") {
 			$user = $this->User->register($this->input->post());
-			$this->load->view('board', $user);
+			$this->load->view('ice', $user);
 		} else {
 			$errors = array(validation_errors());
 			$this->session->set_flashdata('errors', $errors);
@@ -23,7 +23,7 @@ class Users extends CI_Controller {
 		if($result == "valid") {
 			$user = $this->User->login($this->input->post());
 			if($user){
-				$this->load->view('board', $user);
+				$this->load->view('ice', $user);
 			}
 			else {
 				$errors2 = array('No such user exists. Try retyping your info or registering');
@@ -36,5 +36,9 @@ class Users extends CI_Controller {
 			$this->session->set_flashdata('errors2', $errors2);
 			redirect('/');
 		}
+	}
+	public function logout() {
+		$this->session->sess_destroy();
+		redirect('/');
 	}
 }
