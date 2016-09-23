@@ -16,10 +16,13 @@ class Trip extends CI_Model {
 	public function addATrip($trip) {
 		$userName = $this->session->userdata['username'];
 		$loggedInId =  $this->db->query("SELECT id FROM users WHERE username = '{$userName}'")->row_array();
-		// var_dump($loggedInId);die();
 		$this->db->query("INSERT INTO trips (destination, description, travel_date_from, travel_date_to, created_by, created_at, updated_at) VALUES (?, ?, ?, ?, ?, now(), now())", array($trip['destination'], $trip['description'], $trip['travel_date_from'], $trip['travel_date_to'], $loggedInId));
-		$newTripId = $this->db->query("SELECT created_by FROM trips WHERE id=(SELECT max(id) FROM trips)")->row_array();
-		// var_dump($newTripId);die();
+		$newTripId = $this->db->query("SELECT id FROM trips WHERE id=(SELECT max(id) FROM trips)")->row_array();
 		$this->db->query("INSERT INTO users_trips (user_id, trips_id) VALUES (?,?)", array($loggedInId, $newTripId));
+	}
+	public function joinTrip($trip) {
+		$userName = $this->session->userdata['username'];
+		$loggedInId =  $this->db->query("SELECT id FROM users WHERE username = '{$userName}'")->row_array();
+		$this->db->query("INSERT INTO users_trips (user_id, trips_id) VALUES (?,?)", array($loggedInId, $trip));
 	}
 }

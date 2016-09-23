@@ -62,7 +62,7 @@
 					<td><?= $upcomingTrip['destination']?></td>
 					<td><?= $upcomingTrip['travel_date_from']?></td>
 					<td><?= $upcomingTrip['travel_date_to']?></td>
-					<td><a href="">Join</a></td>
+					<td><a href="travels/join/<?= $upcomingTrip['tid'] ?>">Join</a></td>
 				</tr>
 				<?php } ?>
 			</table>

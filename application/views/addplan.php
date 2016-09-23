@@ -7,6 +7,44 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("#travel_date_from").datepicker();
+			$("#travel_date_to").datepicker();
+			$("form").on("submit", function() {
+				var errors =[];
+				var travelFrom = $("#travel_date_from").val();
+				var travelTo = $("#travel_date_to").val();
+				var destination = $("#destination").val();
+				var description = $("#description").val();
+				if(travelFrom == "") {
+					errors.push("You must pick a start date!")
+				};
+				if(travelTo == "") {
+					errors.push("You must pick an end date!")
+				};
+				if(destination =="") {
+					errors.push("You must provide a destination!")
+				};
+				if(description =="") {
+					errors.push("You must provide a description!")
+				};
+				if(errors.length > 0) {
+					$("#feedback").html("");
+					for (var i in errors) {
+						$("#feedback").append("<p>" + errors[i] + "</p>");
+					}
+				} else {
+					$("#feedback").html("");
+					alert("OK " + userName + ", you'll be going from " + travelFrom + " to " + travelTo + ".");
+				}
+				return false;
+			});
+		});
+	</script>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -39,18 +77,17 @@
 				</div>
 				<div class="form-group">
 					<label>Travel Date From:</label>
-					<input type="text" name="travel_date_from" placeholder="Travel Date From:">
+					<input type="text" name="travel_date_from" placeholder="Travel Date From:" class="datepicker" id="travel_date_from">
 				</div>				
 				<div class="form-group">
 					<label>Travel Date To:</label>
-					<input type="text" name="travel_date_to" placeholder="Travel Date To:">
+					<input type="text" name="travel_date_to" placeholder="Travel Date To:" class="datepicker" id="travel_date_to">
 				</div>
 				<div class="form-group">
-					<button type="submit" name="submit" class="btn">Add Trip</button>
+					<button type="submit" name="submit" class="btn" id="checking">Add Trip</button>
+					<div id="feeback"></div>
 				</div>
 			</form>
-
-
 		</div>
 	</div>
 </body>
