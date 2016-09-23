@@ -3,9 +3,9 @@
 	  <div class="container-fluid">
 	    <div class="col-md-9 col-md-offset-1">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">Books Review</a>
+		      <a class="navbar-brand" href="#">Home</a>
 		      <ul class="nav navbar-nav navbar-left">
-					<li><a href="/">Home</a></li>
+					<li><a href="/">Link</a></li>
 				</ul>
 		    </div>
 	      </div>

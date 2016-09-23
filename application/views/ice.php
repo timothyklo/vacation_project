@@ -3,13 +3,13 @@
 	  <div class="container-fluid">
 	    <div class="col-md-9 col-md-offset-1">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" href="/">Review?</a>
+		      <a class="navbar-brand" href="/">Header</a>
 		      <ul class="nav navbar-nav navbar-left">
-					<li><a href="/">Home</a></li>
+					<li><a href="/">Link</a></li>
 				</ul>
 		    </div>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/">Add?</a></li>
+				<li><a href="/">Link</a></li>
 				<li><a href="Users/logout">Log Out</a></li>
 			</ul>
 	      </div>
