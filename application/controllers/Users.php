@@ -10,7 +10,6 @@ class Users extends CI_Controller {
 		$result = $this->User->registerValidate($this->input->post());
 		if($result == "valid") {
 			$user = $this->User->register($this->input->post());
-			$var_dump($user);die();
 			$this->load->view('ice', $user);
 		} else {
 			$errors = array(validation_errors());

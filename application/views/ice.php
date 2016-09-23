@@ -16,22 +16,21 @@
 	  </div>
 	</nav>	
 	<div class="container">
-		<h1>Welcome <?= $first_name ?>!</h1>
+		<h1><?= $first_name ?>!</h1>
 		<div class="col-md-7">
-			<h2>Recent Book Reviews</h2> 
-			<div class="book">
-				<h3><a href="/book/">Book Name Here</a> </h3>
-				<h4>Rating:<span>Stars Here</span></h4>
-				<p><a href="/">User Name</a> says: comment here</p>
-				<p>Posted on: Date of creation here</p>
+			<h2><?= $last_name ?></h2> 
+			<div >
+				<h3><?= $email ?> </h3>
+				<h4><?= $email ?></h4>
+				<p><?= $first_name ?></p>
+				<p><?= $last_name ?></p>
 			</div>
 		</div>
 		<div class="col-md-5">
-			<h1>Other Books with Reviews</h1> 
-			<div class="bookList outlined scroll">
+			<h1><?= $first_name ?></h1> 
+			<div>
 				
 			</div>
-			
 		</div>
 	</div>
 </body>
