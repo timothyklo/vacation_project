@@ -3,14 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Users extends CI_Controller {
 	public function index(){
-		$this->load->view('home');
+		$this->load->view('main');
 	}
 	public function register() {
 		$this->load->model('User');
 		$result = $this->User->registerValidate($this->input->post());
 		if($result == "valid") {
 			$user = $this->User->register($this->input->post());
-			$this->load->view('ice', $user);
+			$this->session->set_userdata(array('username' => $user['username']));
+			redirect('travels');
 		} else {
 			$errors = array(validation_errors());
 			$this->session->set_flashdata('errors', $errors);
@@ -22,8 +23,9 @@ class Users extends CI_Controller {
 		$result = $this->User->loginValidate($this->input->post());
 		if($result == "valid") {
 			$user = $this->User->login($this->input->post());
+			$this->session->set_userdata(array('username' => $user['username']));
 			if($user){
-				$this->load->view('ice', $user);
+				redirect('travels');
 			}
 			else {
 				$errors2 = array('No such user exists. Try retyping your info or registering');

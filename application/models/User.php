@@ -2,10 +2,9 @@
 
 class User extends CI_Model {
 	public function register($post) {
-		$query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at)
-		VALUES (?,?,?,?,?,?)";
-		$values = array($post['first_name'], $post['last_name'], $post['email'],
-			md5($post['password']), date("Y-m-d, H:i:s"), date("Y-m-d, H:i:s"));
+		$query = "INSERT INTO users (name, username, password, created_at, updated_at)
+		VALUES (?,?,?,?,?)";
+		$values = array($post['name'], $post['username'], md5($post['password']), date("Y-m-d, H:i:s"), date("Y-m-d, H:i:s"));
 		$id = $this->db->insert_id($this->db->query($query, $values));
 		return $this->find($id);
 	}
@@ -14,9 +13,8 @@ class User extends CI_Model {
 	}
 	public function registerValidate($post) {
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
-		$this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]|matches[password_check]');
 		$this->form_validation->set_rules('password_check', 'Password Confirmation', 'trim|required');
 		if($this->form_validation->run()) {
@@ -26,13 +24,13 @@ class User extends CI_Model {
 		}
 	}
 	public function login($post) {
-		$query = "SELECT * FROM users WHERE email = ? AND password = ?";
-		$values = array($post['email'], md5($post['password']));
+		$query = "SELECT * FROM users WHERE username = ? AND password = ?";
+		$values = array($post['username'], md5($post['password']));
 		return $this->db->query($query, $values)->row_array();
 	}
 	public function loginValidate($post) {
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+		$this->form_validation->set_rules('username', 'username', 'trim|required|min_length[3]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
 		if($this->form_validation->run()) {
 			return "valid";
