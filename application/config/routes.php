@@ -49,8 +49,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+
+// this is the default controller. You need to change it depending on your project
+$route['default_controller'] = 'Users';
+$route['signIn'] = 'Users/login';
+$route['signUp'] = 'Users/register';
+$route['user/(:num)'] = 'Masters/user/$1';
+$route['book/(:num)'] = 'Masters/book/$1';
+$route['addBook'] = 'Masters/addbooks';
+$route['book'] = 'Masters/newBook';
+$route['logOut'] = 'Masters/kill'; 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['books/(:num)'] = '/books/bookreview/$1';
-$route['users/(:num)'] = '/books/userreviews/$1';
