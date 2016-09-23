@@ -1,8 +1,6 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Masters extends CI_Controller {
-
 	public function addbooks() {
 		$this->load->view('review');
 	}

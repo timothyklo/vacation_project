@@ -17,7 +17,7 @@
 	  </div><!-- /.container-fluid -->
 	</nav>	
 	<div class="container">
-		<h1>Welcome <?= $alias ?>!</h1>
+		<h1>Welcome <?= $name ?>!</h1>
 		<div class="col-md-7">
 			<h2>Recent Book Reviews</h2> 
 			<div class="book">

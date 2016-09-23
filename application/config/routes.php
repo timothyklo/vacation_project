@@ -52,8 +52,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // this is the default controller. You need to change it depending on your project
 $route['default_controller'] = 'Users';
-$route['signIn'] = 'Users/login';
-$route['signUp'] = 'Users/register';
 $route['user/(:num)'] = 'Masters/user/$1';
 $route['book/(:num)'] = 'Masters/book/$1';
 $route['addBook'] = 'Masters/addbooks';

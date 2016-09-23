@@ -1,7 +1,6 @@
 <?php $this->load->view('header'); ?>
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="col-md-9 col-md-offset-1">
 		    <div class="navbar-header">
 		      <a class="navbar-brand" href="#">Books Review</a>
@@ -10,7 +9,7 @@
 				</ul>
 		    </div>
 	      </div>
-	  </div><!-- /.container-fluid -->
+	  </div>
 	</nav>	
 	<div class="container">
 		<div class="col-md-5 outlined">
@@ -26,14 +25,14 @@
 ?>
 			</div>
 			<h1>Register</h1>
-			<form action="signUp" method="post">
+			<form action="Users/register" method="post">
 			<div class="form-group">
-				<label>Name:</label>
-				<input type="text" name="name" class="form-control" placeholder="Name">
+				<label>First name:</label>
+				<input type="text" name="first_name" class="form-control" placeholder="First name">
 			</div>
 			<div class="form-group">
-				<label>Alias:</label>
-				<input type="text" name="alias" class="form-control" placeholder="Alias">
+				<label>Last name:</label>
+				<input type="text" name="last_name" class="form-control" placeholder="Last name">
 			</div>
 			<div class="form-group">
 				<label>Email address:</label>
@@ -65,7 +64,7 @@
 ?>		
 				</div>
 			<h1>Sign In</h1>
-			<form action="signIn" method="post">
+			<form action="Users/login" method="post">
 			<div class="form-group">
 				<label>Email address:</label>
 				<input type="email" name="email" class="form-control" placeholder="Email">
