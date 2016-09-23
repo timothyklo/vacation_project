@@ -1,36 +1,53 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<title></title>
+	<!-- Google Icons -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- Jquery Theme -->
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/hot-sneaks/jquery-ui.css">
+	<!-- Materialize CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+	<!-- Personal CSS -->
 	<link rel="stylesheet" href="/assets/css/style.css">
+
+
+	<!-- Less -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script>
+
+
+	<!-- Jquery --> 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+	<!-- Materialize JS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
 	<script>
 		$(document).ready(function() {
 			$('select').material_select();
 		});
 	</script>
+
 </head>
 <body>
 	<div class="container">
-		<h2> Welcome </h2>
+		<h2> Welcome! </h2>
 		<form id="register" action="welcome/register" method="POST">
 			<h5> Register </h5>
 			<div class="input-field">
-				<input type="text" id="first_name" name="first_name">
-				<label for="name">First name</label>
+				<input type="text" id="name" name="name">
+				<label for="name">Name</label>
 			</div>
 			<div class="input-field">
-				<input type="text" id="last_name" name="last_name">
-				<label for="alias">Last name</label>
+				<input type="text" id="alias" name="alias">
+				<label for="alias">Alias</label>
 			</div>
 			<div class="input-field">
 				<input type="text" id="email" name="email">
@@ -38,7 +55,7 @@
 			</div>
 			<div class="input-field">
 				<input type="password" id="password" name="password">
-				<label for="password">Password</label>
+				<label for="password">Passwrod</label>
 			</div>
 			<div class="input-field">
 				<input type="password" id="cpassword" name="cpassword">
@@ -58,18 +75,7 @@
 			</div>
 			<button class="btn waves-effect waves-light center-align" type="submit">Login</button>
 		</form>
-	</div>
-	<div>
-		<?php if($this->session->flashdata("login_errors"))
-		{
-			echo $this->session->flashdata("login_errors");
-		}
-		?>
-		<?php if($this->session->flashdata("registration_errors"))
-		{
-			echo $this->session->flashdata("registration_errors");
-		}
-		?>
+
 	</div>
 </body>
 </html>
