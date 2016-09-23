@@ -16,7 +16,7 @@
 	  </div>
 	</nav>	
 	<div class="container">
-		<h1>Welcome <?php var_dump($user) ?>!</h1>
+		<h1>Welcome <?= $first_name ?>!</h1>
 		<div class="col-md-7">
 			<h2>Recent Book Reviews</h2> 
 			<div class="book">
